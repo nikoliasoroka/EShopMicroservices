@@ -33,10 +33,21 @@ services:
     container_name: orderdb
     environment:
       - ACCEPT_EULA=Y
-      - SA_PASSWORD=admin
+      - SA_PASSWORD=adminPassword1!
     restart: always
     ports:
       - "1433:1433"
+
+  messagebroker:
+    container_name: messagebroker
+    hostname: ecommerce-mq
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
 
   catalog.api:
     environment:
