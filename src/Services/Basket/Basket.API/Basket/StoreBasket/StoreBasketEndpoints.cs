@@ -9,9 +9,9 @@ public class BasketEndpoints : ICarterModule
     {
         app.MapPost("/basket", async (StoreBasketRequest request, ISender sender) =>
         {
-            var comamnd = request.Adapt<StoreBasketCommand>();
+            var command = request.Adapt<StoreBasketCommand>();
 
-            var result = await sender.Send(comamnd);
+            var result = await sender.Send(command);
 
             var response = result.Adapt<StoreBasketResponse>();
 
