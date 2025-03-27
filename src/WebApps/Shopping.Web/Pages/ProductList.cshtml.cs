@@ -18,7 +18,7 @@ public class ProductListModel(
 
         CategoryList = response.Products.SelectMany(p => p.Category).Distinct();
 
-        if (string.IsNullOrEmpty(categoryName))
+        if (!string.IsNullOrEmpty(categoryName))
         {
             ProductList = response.Products.Where(x => x.Category.Contains(categoryName));
             SelectedCategory = categoryName;
